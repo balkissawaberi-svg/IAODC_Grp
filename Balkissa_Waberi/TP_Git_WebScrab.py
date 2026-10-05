@@ -6,8 +6,12 @@ import pandas as pd
 import time
 
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+options.add_argument("--headless=new")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.binary_location = "/usr/bin/google-chrome"
+
+driver = webdriver.Chrome(options=options)
 
 url = "https://www.investing.com/economic-calendar/"
 driver.get(url)
